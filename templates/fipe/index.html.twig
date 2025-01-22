@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{titulo}}{% endblock %}
+{% block body %}
+<h1>{{ titulo }}</h1>
+<a href="{{ path('fipe_adicionar')}}" class="btn btn-primary">+ Adicionar</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Código Fipe</td>             
+            <td>Valor</td>
+            <td>Ações</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for fipe in tabelas %}
+        <tr>
+            <td>{{ fipe.codigo }}</td>
+            <td>{{ fipe.valor }}</td>
+            <td>
+                <a href="{{ path('fipe_editar', {id: fipe.id})}}" class="btn btn-primary">Editar</a>
+                <a href="{{ path('fipe_excluir', {id: fipe.id})}}" class="btn btn-primary">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

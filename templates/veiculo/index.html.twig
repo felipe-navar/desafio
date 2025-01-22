@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{titulo}}{% endblock %}
+{% block body %}
+<h1>{{ titulo }}</h1>
+
+<a href="{{ path('veiculo_adicionar')}}" class="btn btn-primary">+ Adicionar</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Marca</td>             
+            <td>Modelo</td>
+            <td>Ano</td>
+            <td>Versão</td>
+            <td>Preço</td>
+            <td>Estoque</td>
+            <td>Cidade</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for veiculo in veiculo %}
+        <tr>
+            <td>{{ veiculo.fabricante }}</td>
+            <td>{{ veiculo.modelo }}</td>
+            <td>{{ veiculo.ano }}</td>
+            <td>{{ veiculo.versao }}</td>
+            <td>{{ veiculo.preco }}</td>
+            <td>{{ veiculo.cidade }}</td>
+            <td>
+                <a href="{{ path('veiculo_editar', {id: veiculo.id})}}" class="btn btn-primary">Editar</a>
+                <a href="{{ path('veiculo_excluir', {id: veiculo.id})}}" class="btn btn-primary">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

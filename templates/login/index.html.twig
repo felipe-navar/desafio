@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Login! ✅</h1>
+    {% if erro  %}
+        <div>{{ erro.messageKey|trans(erro.messageData, 'security')}}</div>
+    {% endif %}
+    <form action="{{ path('app_login')}} method="post">
+        <input type="hidden" name="_target_path" value="/veiculo" />
+
+        <label for="username" class="form-label">Email</label>
+        <input type="text" class="form-control" id="username" name="_username" value="{{lastUsername}}"/>
+
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="password" name="_password"/>
+
+        <button type="submit" class="btn btn-primary">Entrar</button>
+
+    </form>
+</div>
+{% endblock %}
