@@ -43,7 +43,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Insira a senha',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min' => 4,
                         'minMessage' => 'Sua senha deve conter, no minimo, {{ limit }} caracteres',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,

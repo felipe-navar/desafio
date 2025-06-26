@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
+{% block title %}Usuário{% endblock %}
 
 {% block body %}
 <style>
@@ -13,7 +13,7 @@
     {% if erro  %}
         <div>{{ erro.messageKey|trans(erro.messageData, 'security')}}</div>
     {% endif %}
-    <form action="{{ path('app_login')}} method="post">
+    <form action="{{ path('veiculo')}}" method="post">
         <input type="hidden" name="_target_path" value="/veiculo" />
 
         <label for="username" class="form-label">Email</label>
