@@ -3,7 +3,9 @@
 {% block body %}
 <h1>{{ titulo }}</h1>
 
-<a href="{{ path('veiculo_adicionar')}}" class="btn btn-primary">+ Adicionar</a>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="{{ path('veiculo_adicionar')}}" class="btn btn-primary">+ Adicionar</a>
+{% endif %}
 <table class="table">
     <thead>
         <tr>
@@ -14,6 +16,10 @@
             <td>Preço</td>
             <td>Estoque</td>
             <td>Cidade</td>
+            <td>Tabela Fipe</td>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <td>Ações</td>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -24,11 +30,15 @@
             <td>{{ veiculo.ano }}</td>
             <td>{{ veiculo.versao }}</td>
             <td>{{ veiculo.preco }}</td>
+            <td>{{ veiculo.qtdestoque }}</td>
             <td>{{ veiculo.cidade }}</td>
+            <td>{{ veiculo.fipe }}</td>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <td>
                 <a href="{{ path('veiculo_editar', {id: veiculo.id})}}" class="btn btn-primary">Editar</a>
                 <a href="{{ path('veiculo_excluir', {id: veiculo.id})}}" class="btn btn-primary">Excluir</a>
             </td>
+            {% endif %}
         </tr>
     {% endfor %}
     </tbody>

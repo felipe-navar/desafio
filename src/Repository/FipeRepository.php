@@ -21,6 +21,8 @@ class FipeRepository extends ServiceEntityRepository
         
         $query = 'SELECT historico FROM fipe';
 
+        
+
         $resultSet = $con->executeQuery($query);
 
         $resultSet = $resultSet->fetchAllAssociative();

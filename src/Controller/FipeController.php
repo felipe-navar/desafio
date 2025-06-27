@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class FipeController extends AbstractController{
 
@@ -18,7 +19,6 @@ class FipeController extends AbstractController{
 public function index(FipeRepository $fipeRepository) : Response {
 
     $data['tabelas'] = $fipeRepository->findAll();
-    $data['historico'] = $fipeRepository->pegarHistorico();
     $data['titulo'] = 'Tabelas Fipe';
 
     return $this->render('fipe/index.html.twig', $data);
@@ -27,6 +27,7 @@ public function index(FipeRepository $fipeRepository) : Response {
 
 #[Route('/fipe/adicionar', name:'fipe_adicionar')]
 public function adicionar(Request $request, EntityManagerInterface $em) : Response{
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
     $msg = '';
     $fipe = new Fipe();
     $form = $this->createForm(FipeType::class, $fipe);
@@ -46,6 +47,7 @@ public function adicionar(Request $request, EntityManagerInterface $em) : Respon
 }
 
 #[Route('/fipe/editar/{id}', name:'fipe_editar')]
+#[IsGranted('ROLE_ADMIN')]
 public function editar($id ,Request $request, EntityManagerInterface $em, FipeRepository $fipeRepository) : Response{
     $msg = '';
     $fipe = $fipeRepository->find($id);
@@ -65,6 +67,7 @@ public function editar($id ,Request $request, EntityManagerInterface $em, FipeRe
 }
 
 #[Route('/fipe/excluir/{id}', name:'fipe_excluir')]
+#[IsGranted('ROLE_ADMIN')]
 public function excluir($id ,Request $request, EntityManagerInterface $em, FipeRepository $fipeRepository) : Response{
     $fipe = $fipeRepository->find($id);
     

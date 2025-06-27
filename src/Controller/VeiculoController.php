@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class VeiculoController extends AbstractController{
 
@@ -25,6 +26,7 @@ public function index(VeiculoRepository $veiculoRepository) : Response {
 }
 
 #[Route('/veiculo/adicionar', name:'veiculo_adicionar')]
+#[IsGranted('ROLE_ADMIN')]
 public function adicionar(Request $request, EntityManagerInterface $em) : Response{
     $msg = '';
     $veiculo = new Veiculo();
@@ -45,6 +47,7 @@ public function adicionar(Request $request, EntityManagerInterface $em) : Respon
 
 #[Route('/veiculo/editar/{id}', name:'veiculo_editar')]
 public function editar($id, Request $request, EntityManagerInterface $em, VeiculoRepository $veiculorep) : Response{
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
     $msg = '';
     $veiculo = $veiculorep->find($id);
     $form = $this->createForm(VeiculoType::class, $veiculo);
@@ -63,6 +66,7 @@ public function editar($id, Request $request, EntityManagerInterface $em, Veicul
 
 #[Route('/veiculo/excluir/{id}', name:'veiculo_excluir')]
 public function excluir($id ,Request $request, EntityManagerInterface $em, VeiculoRepository $veiculoRepository) : Response{
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
     $veiculo = $veiculoRepository->find($id);
     
     $em->remove($veiculo);

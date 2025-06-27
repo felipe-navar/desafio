@@ -13,7 +13,7 @@
     {% if erro  %}
         <div>{{ erro.messageKey|trans(erro.messageData, 'security')}}</div>
     {% endif %}
-    <form action="{{ path('veiculo')}}" method="post">
+    <form action="{{ path('app_login')}}" method="post">
         <input type="hidden" name="_target_path" value="/veiculo" />
 
         <label for="username" class="form-label">Email</label>

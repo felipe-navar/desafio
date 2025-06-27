@@ -2,13 +2,18 @@
 {% block title %}{{titulo}}{% endblock %}
 {% block body %}
 <h1>{{ titulo }}</h1>
-<a href="{{ path('fipe_adicionar')}}" class="btn btn-primary">+ Adicionar</a>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="{{ path('fipe_adicionar')}}" class="btn btn-primary">+ Adicionar</a>
+{% endif %}
 <table class="table">
     <thead>
         <tr>
             <td>Código Fipe</td>             
             <td>Valor</td>
+            <td>Historico</td>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <td>Ações</td>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -16,10 +21,13 @@
         <tr>
             <td>{{ fipe.codigo }}</td>
             <td>{{ fipe.valor }}</td>
+            <td>{{ fipe.historico | date('Y-m-d') }} </td>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <td>
                 <a href="{{ path('fipe_editar', {id: fipe.id})}}" class="btn btn-primary">Editar</a>
                 <a href="{{ path('fipe_excluir', {id: fipe.id})}}" class="btn btn-primary">Excluir</a>
             </td>
+            {% endif %}
         </tr>
     {% endfor %}
     </tbody>

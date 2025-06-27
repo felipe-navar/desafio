@@ -3,8 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\FipeRepository;
+use DateTime;
+use DateTimeInterface;
+use Doctrine\DBAL\Types\StringType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\VarDumper\Exception\ThrowingCasterException;
 
 #[ORM\Entity(repositoryClass: FipeRepository::class)]
 class Fipe
@@ -61,6 +65,11 @@ class Fipe
         return $this->historico;
     }
 
+    public function mutableFromInterface(\DateTimeInterface $dateTimeInterface): \DateTime
+    {
+        return new \DateTime('@'.$dateTimeInterface->getTimestamp(), $dateTimeInterface->getTimezone());
+    }
+
     public function setHistorico(\DateTimeInterface $historico): static
     {
         $this->historico = $historico;
@@ -85,10 +94,7 @@ class Fipe
         return $this;
     }
 
-    public function __toString()
-    {
-        return (string) $this->historico;
-    }
-
+    
+    
 
 }

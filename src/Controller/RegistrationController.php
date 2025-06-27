@@ -22,12 +22,9 @@ class RegistrationController extends AbstractController
 
             
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
 
-            // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
-            // $user->setRoles(['ROLE_USER']);
             if($user->getNivel()=="1"){
                 $user->setRoles(['ROLE_ADMIN']);
             }else{
@@ -37,8 +34,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
-
+            
             return $this->redirectToRoute('app_login');
         }
 

@@ -16,6 +16,8 @@ class VeiculoRepository extends ServiceEntityRepository
         parent::__construct($registry, Veiculo::class);
     }
 
+    
+
     //    /**
     //     * @return Veiculo[] Returns an array of Veiculo objects
     //     */
