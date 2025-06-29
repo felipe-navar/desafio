@@ -16,6 +16,7 @@ class FipeType extends AbstractType{
         $builder->add('codigo',TextType::class, ['label'=> 'Código: '])
                 ->add('valor', MoneyType::class, ['label'=> 'Valor: '])
                 ->add('historico',DateType::class, ['label'=>'Mês/Ano: '])
+                ->add('cidade',TextType::class, ['label'=>'Cidade: '])
                 ->add('Salvar', SubmitType::class);
     }
 }

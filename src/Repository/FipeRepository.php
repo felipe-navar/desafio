@@ -16,21 +16,7 @@ class FipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Fipe::class);
     }
 
-    public function pegarHistorico(){
-        $con = $this->getEntityManager()->getConnection();
-        
-        $query = 'SELECT historico FROM fipe';
-
-        
-
-        $resultSet = $con->executeQuery($query);
-
-        $resultSet = $resultSet->fetchAllAssociative();
-        
-        return $resultSet;
-
-    }
-
+    
     //    /**
     //     * @return Fipe[] Returns an array of Fipe objects
     //     */

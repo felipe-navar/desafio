@@ -27,7 +27,10 @@ class Fipe
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $historico = null;
 
-    #[ORM\OneToOne(mappedBy: 'fipe', cascade: ['persist', 'remove'])]
+    #[ORM\Column(length: 50)]
+    private ?string $cidade = null;
+
+    #[ORM\OneToOne(mappedBy: 'fipe', cascade: ['persist'])]
     private ?Veiculo $yes = null;
 
 
@@ -76,6 +79,19 @@ class Fipe
 
         return $this;
     }
+
+    public function getCidade(): ?string
+    {
+        return $this->cidade;
+    }
+
+    public function setCidade(string $cidade): static
+    {
+        $this->cidade = $cidade;
+
+        return $this;
+    }
+
 
     public function getYes(): ?Veiculo
     {

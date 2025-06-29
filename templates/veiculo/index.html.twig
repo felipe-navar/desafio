@@ -15,8 +15,7 @@
             <td>Versão</td>
             <td>Preço</td>
             <td>Estoque</td>
-            <td>Cidade</td>
-            <td>Tabela Fipe</td>
+            <td>Código Fipe</td>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <td>Ações</td>
             {% endif %}
@@ -31,8 +30,7 @@
             <td>{{ veiculo.versao }}</td>
             <td>{{ veiculo.preco }}</td>
             <td>{{ veiculo.qtdestoque }}</td>
-            <td>{{ veiculo.cidade }}</td>
-            <td>{{ veiculo.fipe }}</td>
+            <td>{{ veiculo.fipe.codigo|default('indefinido') }}</td>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <td>
                 <a href="{{ path('veiculo_editar', {id: veiculo.id})}}" class="btn btn-primary">Editar</a>

@@ -22,7 +22,6 @@ class VeiculoType extends AbstractType{
                 ->add('ano',IntegerType::class, ['label'=>'Ano: '])
                 ->add('versao',TextType::class, ['label'=>'Versão: '])
                 ->add('qtd_estoque',IntegerType::class, ['label'=>'Quantidade em Estoque: '])
-                ->add('cidade',TextType::class, ['label'=>'Cidade: '])
                 ->add('Salvar', SubmitType::class);
     }
 }

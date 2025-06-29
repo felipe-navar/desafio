@@ -10,6 +10,7 @@
         <tr>
             <td>Código Fipe</td>             
             <td>Valor</td>
+            <td>Cidade</td>
             <td>Historico</td>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <td>Ações</td>
@@ -21,6 +22,7 @@
         <tr>
             <td>{{ fipe.codigo }}</td>
             <td>{{ fipe.valor }}</td>
+            <td>{{ fipe.cidade }}</td>
             <td>{{ fipe.historico | date('Y-m-d') }} </td>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <td>

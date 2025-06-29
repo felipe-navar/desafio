@@ -31,11 +31,8 @@ class Veiculo
     #[ORM\Column]
     private ?int $qtd_estoque = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $cidade = null;
-
-    #[ORM\OneToOne(inversedBy: 'yes', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\OneToOne(inversedBy: 'yes', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Fipe $fipe = null;
 
     public function getId(): ?int
@@ -111,18 +108,6 @@ class Veiculo
     public function setQtdEstoque(int $qtd_estoque): static
     {
         $this->qtd_estoque = $qtd_estoque;
-
-        return $this;
-    }
-
-    public function getCidade(): ?string
-    {
-        return $this->cidade;
-    }
-
-    public function setCidade(string $cidade): static
-    {
-        $this->cidade = $cidade;
 
         return $this;
     }
