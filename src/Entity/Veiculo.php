@@ -35,6 +35,9 @@ class Veiculo
     #[ORM\JoinColumn(nullable: true)]
     private ?Fipe $fipe = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $tipo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class Veiculo
     public function setFipe(Fipe $fipe): static
     {
         $this->fipe = $fipe;
+
+        return $this;
+    }
+
+    public function getTipo(): ?string
+    {
+        return $this->tipo;
+    }
+
+    public function setTipo(string $tipo): static
+    {
+        $this->tipo = $tipo;
 
         return $this;
     }
