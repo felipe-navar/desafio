@@ -9,6 +9,7 @@
 <table class="table">
     <thead>
         <tr>
+            <td>Tipo</td>             
             <td>Marca</td>             
             <td>Modelo</td>
             <td>Ano</td>
@@ -24,6 +25,7 @@
     <tbody>
     {% for veiculo in veiculo %}
         <tr>
+            <td>{{ veiculo.tipo }}</td>
             <td>{{ veiculo.fabricante }}</td>
             <td>{{ veiculo.modelo }}</td>
             <td>{{ veiculo.ano }}</td>

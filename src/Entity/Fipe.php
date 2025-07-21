@@ -70,7 +70,7 @@ class Fipe
 
     public function mutableFromInterface(\DateTimeInterface $dateTimeInterface): \DateTime
     {
-        return new \DateTime('@'.$dateTimeInterface->getTimestamp(), $dateTimeInterface->getTimezone());
+        return new \DateTime('@' . $dateTimeInterface->getTimestamp(), $dateTimeInterface->getTimezone());
     }
 
     public function setHistorico(\DateTimeInterface $historico): static
@@ -84,7 +84,7 @@ class Fipe
     {
         return $this->cidade;
     }
-
+    
     public function setCidade(string $cidade): static
     {
         $this->cidade = $cidade;
@@ -109,8 +109,4 @@ class Fipe
 
         return $this;
     }
-
-    
-    
-
 }

@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Veiculo;
-use App\Form\FipeType;
 use App\Form\VeiculoType;
 use App\Repository\VeiculoRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

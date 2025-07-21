@@ -16,6 +16,7 @@ class VeiculoType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('fipe',EntityType::class, [ 'class'=> Fipe::class, 'choice_label'=>'codigo', 'label'=> 'Código Fipe: '])
+                ->add('tipo',TextType::class, ['label'=>'Tipo: '])
                 ->add('preco', MoneyType::class, ['label'=> 'Preço: '])
                 ->add('fabricante',TextType::class, ['label'=>'Marca: '])
                 ->add('modelo',TextType::class, ['label'=>'Modelo: '])
